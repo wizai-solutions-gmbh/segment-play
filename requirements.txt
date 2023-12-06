@@ -1,4 +1,5 @@
 filterpy==1.4.5
+inputs==0.5
 mediapipe==0.10.8
 mobile-sam @ git+https://github.com/ChaoningZhang/MobileSAM.git@12d80d4
 numpy==1.24.4

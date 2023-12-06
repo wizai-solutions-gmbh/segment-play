@@ -202,7 +202,7 @@ class Director:
                             self.settings.id_position_map[track_id] * 0.5
                         mod_x_pos = int(x_pos) % int(
                             image.shape[1] * 0.5)
-                        if abs(mod_x_pos - color_pos) > p_width:
+                        if abs(mod_x_pos - color_pos) > p_width * 0.5:
                             gray = True
                     masking_image = original_image if not mirror \
                         else flipped_original_image

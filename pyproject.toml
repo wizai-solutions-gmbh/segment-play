@@ -18,7 +18,8 @@ dependencies = [
   "filterpy==1.4.5",
   "mobile-sam@git+https://github.com/ChaoningZhang/MobileSAM.git@12d80d4",
   "timm==0.9.10",
-  "medipipe==0.10.8"
+  "medipipe==0.10.8",
+  "inputs==0.5"
 ]
 license = "Apache-2.0"
 packages = ["segment-play"]
