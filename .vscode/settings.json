@@ -1,0 +1,12 @@
+{
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.autopep8",
+    "editor.formatOnSave": true
+  },
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.extraPaths": [
+    "./src"
+  ],
+  "python.testing.pytestEnabled": true,
+  "python.testing.unittestEnabled": false
+}

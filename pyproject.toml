@@ -1,0 +1,39 @@
+[project]
+name = "segment-play"
+description = "Segment Play is a tool that shows some possibilities of real-time segmentation in an interactive scenario with a choreographic or game-like context."
+version = "0.1.0"
+authors = [
+  "Julian Rogawski <julianrogawski@gmail.com>"
+]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: Apache-2.0 License"
+]
+dependencies = [
+  "numpy==1.26.1",
+  "segment-anything@git+https://github.com/facebookresearch/segment-anything.git@6fdee8f",
+  "opencv-python==4.8.1.78",
+  "onnxruntime==1.15.1",
+  "scikit-image==0.18.3",
+  "filterpy==1.4.5",
+  "mobile-sam@git+https://github.com/ChaoningZhang/MobileSAM.git@12d80d4",
+  "timm==0.9.10",
+  "medipipe==0.10.8"
+]
+license = "Apache-2.0"
+packages = ["segment-play"]
+readme = "README.md"
+src_root = "src"
+url = "https://github.com/wizai-solutions-gmbh/segment-play"
+
+[project.optional-dependencies]
+dev = [
+  "pre-commit==3.5.0"
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
