@@ -114,29 +114,28 @@ class Director:
                     upper_right_arm_vec = np.array([
                         pose_landmarks[14].x - pose_landmarks[12].x,
                         pose_landmarks[14].y - pose_landmarks[12].y,
-                        (pose_landmarks[14].z - pose_landmarks[12].z) * 0.5,
+                        (pose_landmarks[14].z - pose_landmarks[12].z) * 0.0,
                     ], dtype=float)
                     lower_right_arm_vec = np.array([
                         pose_landmarks[16].x - pose_landmarks[14].x,
                         pose_landmarks[16].y - pose_landmarks[14].y,
-                        (pose_landmarks[16].z - pose_landmarks[14].z) * 0.5,
+                        (pose_landmarks[16].z - pose_landmarks[14].z) * 0.0,
                     ], dtype=float)
                     upper_left_arm_vec = np.array([
                         pose_landmarks[13].x - pose_landmarks[11].x,
                         pose_landmarks[13].y - pose_landmarks[11].y,
-                        (pose_landmarks[13].z - pose_landmarks[11].z) * 0.5,
+                        (pose_landmarks[13].z - pose_landmarks[11].z) * 0.0,
                     ], dtype=float)
                     lower_left_arm_vec = np.array([
                         pose_landmarks[15].x - pose_landmarks[13].x,
                         pose_landmarks[15].y - pose_landmarks[13].y,
-                        (pose_landmarks[15].z - pose_landmarks[13].z) * 0.5,
+                        (pose_landmarks[15].z - pose_landmarks[13].z) * 0.0,
                     ], dtype=float)
                     if get_verticality(upper_right_arm_vec) \
                             + get_verticality(lower_right_arm_vec) \
                             + get_verticality(upper_left_arm_vec) \
                             + get_verticality(lower_left_arm_vec) > 0.8 * 4:
                         visible = False
-
                 elif ratio > 2.5:
                     visible = False
 
