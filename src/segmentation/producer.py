@@ -93,25 +93,26 @@ def produce_segmentation(
                                    pm in zip(landmarks, point_mode) if pm == 1]
                     positions_y = [landmark[1] for landmark,
                                    pm in zip(landmarks, point_mode) if pm == 1]
-                    min_x = min(positions_x)
-                    max_x = max(positions_x)
-                    min_y = min(positions_y)
-                    max_y = max(positions_y)
-                    if input_box[0] < min_x - padding:
-                        input_box[0] = max(min_x - padding, input_box[0])
-                    if input_box[1] < min_y - padding:
-                        input_box[1] = max(min_y - padding, input_box[1])
-                    if input_box[2] > max_x + padding:
-                        input_box[2] = min(max_x + padding, input_box[2])
-                    if input_box[3] > max_y + padding:
-                        input_box[3] = min(max_y + padding, input_box[3])
-                    input_box[:4] = [*clip_section_xyxy(
-                        input_box[0],
-                        input_box[1],
-                        input_box[2],
-                        input_box[3],
-                        scaled_image
-                    )]
+                    if positions_x and positions_y:
+                        min_x = min(positions_x)
+                        max_x = max(positions_x)
+                        min_y = min(positions_y)
+                        max_y = max(positions_y)
+                        if input_box[0] < min_x - padding:
+                            input_box[0] = max(min_x - padding, input_box[0])
+                        if input_box[1] < min_y - padding:
+                            input_box[1] = max(min_y - padding, input_box[1])
+                        if input_box[2] > max_x + padding:
+                            input_box[2] = min(max_x + padding, input_box[2])
+                        if input_box[3] > max_y + padding:
+                            input_box[3] = min(max_y + padding, input_box[3])
+                        input_box[:4] = [*clip_section_xyxy(
+                            input_box[0],
+                            input_box[1],
+                            input_box[2],
+                            input_box[3],
+                            scaled_image
+                        )]
 
             new_mask = segment.bbox_masks(input_box, landmarks, point_mode)
 
