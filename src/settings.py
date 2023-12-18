@@ -75,7 +75,7 @@ class GameSettings:
     def print(self) -> None:
         print(
             'Controls:'
-            + '\nPress "f" for hiding people based on their area covering the image.'  # noqa: E501
+            + '\nPress "f" for hiding people based on their area covering the image or pose data.'  # noqa: E501
             + '\nPress "i" for triggering invisibility of all detected people.'
             + '\nPress "j" for hiding everything except all detected people.'
             + '\nPress "g" for modifying color of all detected people based on their position.'  # noqa: E501

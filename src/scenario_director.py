@@ -33,6 +33,8 @@ from util.visualize import show_box
 def parse_args() -> Dict:
     parser = argparse.ArgumentParser(
         'Demo controllable via keys to control various effects.')
+    parser.add_argument('--fullscreen', dest='fullscreen', default=False,
+                        action='store_true', help='Show result in fullscreen mode.')
     parser.add_argument('--slow', dest='slow', default=False,
                         action='store_true', help='Using faster SAM model.')
     parser.add_argument('--down-scale', type=float,
@@ -59,7 +61,8 @@ class Director:
             fast: bool = True,
             down_scale: Optional[float] = None,
             camera_settings: Optional[CameraSettings] = None,
-            frame_pool: Optional[FramePool] = None
+            frame_pool: Optional[FramePool] = None,
+            fullscreen: bool = False
     ) -> None:
         self.bodypart_segmentation: Synchronized[int] = Value(
             'i', BodyPartSegmentation.ALL.value)  # type: ignore
@@ -77,6 +80,11 @@ class Director:
         )
         self.frame_pool = frame_pool
         self.pose_renderer = PoseRenderer()
+
+        if fullscreen:
+            cv2.namedWindow('application', cv2.WINDOW_NORMAL)
+            cv2.setWindowProperty(
+                'application', cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
 
     def frame(self, data: DataCollection) -> np.ndarray:
         original_image = data.get(FrameData).get_frame(self.frame_pool)
@@ -318,7 +326,8 @@ def main(args: Dict) -> None:
         not args.get('slow', False),
         args.get('down_scale', False),
         camera_settings,
-        frame_pool
+        frame_pool,
+        args.get('fullscreen', False)
     )
 
     try:
