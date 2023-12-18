@@ -198,8 +198,7 @@ class Director:
                             gray = True
                     masking_image = original_image if not mirror \
                         else flipped_original_image
-                    gray_mask = scale_m if not mirror else cv2.flip(
-                        scale_m, 1)
+                    gray_mask = scale_m if not mirror else np.fliplr(scale_m)
                     x_pos = box[0]
                     if mirror:
                         x_pos = (image.shape[1] - x_pos) - p_width
